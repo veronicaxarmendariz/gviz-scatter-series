@@ -1,0 +1,57 @@
+<!--
+You are free to copy and use this sample in accordance with the terms of the
+Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
+-->
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>
+      Google Visualization API Sample
+    </title>
+    <script type="text/javascript" src="//www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load('visualization', '1', {packages: ['corechart']});
+    </script>
+    <script type="text/javascript">
+      function drawVisualization() {
+          // Create and populate the data table.
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'Percent Minority'); // Implicit domain label col.
+      data.addColumn('number', 'Series1'); // Implicit data series 1, change color below
+      data.addColumn({ 'type': 'string', 'role': 'tooltip', 'p': { 'html': true } });
+      data.addColumn('number', 'Series2');// Data series 2, change color below
+      data.addColumn({ 'type': 'string', 'role': 'tooltip', 'p': { 'html': true } });
+      data.addColumn('number', 'Series3');// Data series 3, change color below
+      data.addColumn({ 'type': 'string', 'role': 'tooltip', 'p': { 'html': true } });
+      data.addRows([
+            [80.66,   50.7, 'schoolA', null, null, null, null],
+            [79.84,   66.6, 'schoolB', null, null, null, null],
+            [78.62,   89.8, 'schoolC', null, null, null, null],
+            [40.62,   null, null, 20.77, 'schoolD', null, null],
+            [79.84,   null, null, 56.67, 'schoolE', null, null],
+            [78.62,   null, null, 45.66, 'schoolF', null, null],
+            [68.84,   null, null, null, null, 45, 'schoolG'],
+            [63.62,   null, null, null, null, 73, 'schoolH'],
+      ]);
+      
+           var chart = new google.visualization.ScatterChart(
+              document.getElementById('visualization'));
+          chart.draw(data, {title: 'Interactive Scatter Chart, with three data series, and names in tooltip, via Google Visualization API',
+                            width: 600, height: 600,
+                            vAxis: {title: "Percent Minority", minValue: 0, titleTextStyle: {color: "black"},gridlines : {count:3}},
+                            hAxis: {title: "Percent Poverty", minValue: 0, titleTextStyle: {color: "black"},gridlines : {count:3}},
+                            legend:'right',colors: ["red","blue", "green"]}
+      
+                    );
+      }
+
+      google.setOnLoadCallback(drawVisualization);
+    </script>
+  </head>
+  <body style="font-family: Arial;border: 0 none;">
+    <div id="visualization" style="width: 600px; height: 600px;"></div>
+  </body>
+</html>
+​
