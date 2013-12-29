@@ -2,53 +2,69 @@
 You are free to copy and use this sample in accordance with the terms of the
 Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
 -->
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!doctype html>
+<html>
   <head>
-    <meta charset="UTF-8" />
-    <title>
-      Google Visualization API Sample
-    </title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Google Visualization ScatterChart Series by JackDougherty</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
     <script type="text/javascript" src="//www.google.com/jsapi"></script>
     <script type="text/javascript">
       google.load('visualization', '1', {packages: ['corechart']});
     </script>
     <script type="text/javascript">
-      function drawVisualization() {
-          // Create and populate the data table.
-      var data = new google.visualization.DataTable();
-      data.addColumn('number', 'Percent Minority'); // Implicit domain label col.
-      data.addColumn('number', 'Series1'); // Implicit data series 1, change color below
-      data.addColumn({ 'type': 'string', 'role': 'tooltip', 'p': { 'html': true } });
-      data.addColumn('number', 'Series2');// Data series 2, change color below
-      data.addColumn({ 'type': 'string', 'role': 'tooltip', 'p': { 'html': true } });
-      data.addColumn('number', 'Series3');// Data series 3, change color below
-      data.addColumn({ 'type': 'string', 'role': 'tooltip', 'p': { 'html': true } });
-      data.addRows([
-            [80.66,   50.7, 'schoolA', null, null, null, null],
-            [79.84,   66.6, 'schoolB', null, null, null, null],
-            [78.62,   89.8, 'schoolC', null, null, null, null],
-            [40.62,   null, null, 20.77, 'schoolD', null, null],
-            [79.84,   null, null, 56.67, 'schoolE', null, null],
-            [78.62,   null, null, 45.66, 'schoolF', null, null],
-            [68.84,   null, null, null, null, 45, 'schoolG'],
-            [63.62,   null, null, null, null, 73, 'schoolH'],
-      ]);
-           var chart = new google.visualization.ScatterChart(
-              document.getElementById('visualization'));
-          chart.draw(data, {title: 'Interactive Scatter Chart, with three data series, and names in tooltip, via Google Visualization API',
-                            width: 600, height: 600,
-                            vAxis: {title: "Percent Minority", minValue: 0, titleTextStyle: {color: "black"},gridlines : {count:3}},
-                            hAxis: {title: "Percent Poverty", minValue: 0, titleTextStyle: {color: "black"},gridlines : {count:3}},
-                            legend:'right',colors: ["red","blue", "green"]}
-                    );
+    var visualization;
+
+    function drawVisualization() {
+      // To see the data that this visualization uses, browse to
+      // https://docs.google.com/spreadsheet/ccc?key=0AtmGKybdRLlZdHBvSGxIdEJoc1YxNUxtTThGbU9Qcnc
+      // In your Google Sheet, copy the key in the URL and paste in below
+      // Adjust the cell range (e.g. A1:G7) to match data in your Google Sheet
+      // In your Google Sheet, File > Publish to the Web
+      var query = new google.visualization.Query(
+          'http://spreadsheets.google.com/tq?key=0AtmGKybdRLlZdHBvSGxIdEJoc1YxNUxtTThGbU9Qcnc&range=A1:G7&pub=1');
+    
+      // Send the query with a callback function.
+      query.send(handleQueryResponse);
+    }
+    
+    function handleQueryResponse(response) {
+      if (response.isError()) {
+        alert('Error in query: ' + response.getMessage() + ' ' + response.getDetailedMessage());
+        return;
       }
-      google.setOnLoadCallback(drawVisualization);
+      // Set data series (3 in this sample) to match your Google Sheet. 
+      // Set property for each tooltip column in your GoogleSheet (first = 0)
+      var data = response.getDataTable();
+      data.setColumnProperty(2, 'role', 'tooltip');
+      data.setColumnProperty(4, 'role', 'tooltip');
+      data.setColumnProperty(6, 'role', 'tooltip');
+      visualization = new google.visualization.ScatterChart(document.getElementById('visualization'));
+      // Insert titles, labels, font sizes, and legend/data series colors below.
+      // If Google Sheet data is not percents, reset maxValue and remove format. 
+      // Modify legend labels via Y-series column headers in Google Sheet.
+      // See more ScatterChart options at 
+      // https://developers.google.com/chart/interactive/docs/gallery/scatterchart
+      visualization.draw(data, 
+        {title: 'Interactive Scatter Chart from Google Sheet source, with 3-color data series and legend (Float over points to view data labels)', 
+          titleTextStyle: {fontSize: 16},
+          vAxis: {title: "Insert Y-axis label", titleTextStyle: {fontSize: 14}, minValue: 0, maxValue: 1, format:'#,###%', gridlines: {count:3}},
+          hAxis: {title: "Insert X-axis label", titleTextStyle: {fontSize: 14}, minValue: 0, maxValue: 1, format:'#,###%', gridlines: {count:3}}, 
+          legend:'right',colors: ["red","blue", "green"]
+        }
+                    );
+    }
+    
+    google.setOnLoadCallback(drawVisualization);
     </script>
   </head>
   <body style="font-family: Arial;border: 0 none;">
-    <div id="visualization" style="width: 600px; height: 600px;"></div>
-    <p>Code available at <a href="https://github.com/JackDougherty/gviz-scatter-series" target="_blank">https://github.com/JackDougherty/gviz-scatter-series</a>
+    <div id="visualization" style="height: 600px; width: 600px;"></div>
+    <!-- Remove or insert your own text below -->
+    <p>Google Visualization API code and instructions available at</br><a href="https://github.com/JackDougherty/gviz-scatter-series" target="_blank">https://github.com/JackDougherty/gviz-scatter-series</a>
   </body>
 </html>
