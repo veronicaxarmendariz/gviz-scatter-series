@@ -11,7 +11,9 @@ To create your own version:
 
 2) Download a copy of the index.HTML file (see GitHub clone or download zip button), modify as instructed, and host on a live website. (If you do not have your own web host, read about <a href="https://www.dropbox.com/help/16/en">Creating a Public Folder</a> on a free Dropbox.com account.)
 
-Thanks to the Google Visualization Scatter Chart configuration page (https://developers.google.com/chart/interactive/docs/gallery/scatterchart)
+Learn more about Visualizations at Google Code Playground 
+https://code.google.com/apis/ajax/playground/
+and
+Google Visualization Scatter Chart configuration page https://developers.google.com/chart/interactive/docs/gallery/scatterchart
 
-Credit to @erose for helping me to figure it out.
-
+Credit to https://github.com/erose for helping me to figure it out.
