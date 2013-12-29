@@ -3,7 +3,7 @@ gviz-scatter-series
 
 Google Visualization API interactive scatter chart, with Google Sheet data source, 3-color data series/legend, and data labels in text tooltip
 
-See <a href="http://jackdougherty.github.io/gviz-scatter-series/"> live demo at http://jackdougherty.github.io/gviz-scatter-series/</a>
+See <a href="http://jackdougherty.github.io/gviz-scatter-series/"> live demo</a> at http://jackdougherty.github.io/gviz-scatter-series/
 
 To create your own version:
 
