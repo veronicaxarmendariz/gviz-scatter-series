@@ -18,3 +18,6 @@ and
 Google Visualization Scatter Chart configuration page https://developers.google.com/chart/interactive/docs/gallery/scatterchart
 
 Credit to https://github.com/erose for helping me to figure it out.
+
+TO DO: test ways to simplify code with ChartWrapper and DrawChart techniques at
+https://developers.google.com/chart/interactive/docs/drawing_charts
