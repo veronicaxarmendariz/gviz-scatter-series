@@ -47,7 +47,7 @@ Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
       data.setColumnProperty(6, 'role', 'tooltip');
       chart = new google.visualization.ScatterChart(document.getElementById('chart'));
       // Insert titles, labels, font sizes, and legend/data series colors below.
-      // If Google Sheet data is not percents, reset maxValue and remove format. 
+      // If Google Sheet data is not in decimal or percent format (between 0 and 1), reset maxValue and remove format. 
       // Modify legend labels via Y-series column headers in Google Sheet.
       // See more ScatterChart options at 
       // https://developers.google.com/chart/interactive/docs/gallery/scatterchart
@@ -55,7 +55,7 @@ Apache license (http://www.apache.org/licenses/LICENSE-2.0.html)
           titleTextStyle: {fontSize: 16},
           vAxis: {title: "Insert Y-axis label", titleTextStyle: {fontSize: 14}, minValue: 0, maxValue: 1, format:'#,###%', gridlines: {count:3}},
           hAxis: {title: "Insert X-axis label", titleTextStyle: {fontSize: 14}, minValue: 0, maxValue: 1, format:'#,###%', gridlines: {count:3}}, 
-          legend:'right',colors: ["red","blue", "green"]}
+          legend:'right',colors: ["red","blue", "purple"]}
       chart.draw(data, options);
     }
     </script>
