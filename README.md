@@ -3,7 +3,7 @@ gviz-scatter-series
 
 Use this template to create a custom interactive scatter chart (to visualize relationship between X-Y data), with options for multiple data series/legend and data labels in the text tooltip. It draws data from a Google Spreadsheet using Google Visualization API. Requires a free Google Drive account and text editor, and ability to modify spreadsheet and HTML templates as instructed.
 
-See live demo at http://jackdougherty.github.io/gviz-scatter-series/ctvoices-race-freelunch.html
+See live demo at http://veronicaxarmendariz.github.io/gviz-scatter-series/ctvoices-race-freelunch.html
 
 Learn more at Data Visualization with Community Partners open-access book-in-progress at http://epress.trincoll.edu/dataviz
 
